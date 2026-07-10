@@ -21,13 +21,13 @@ jobs:
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_USER: root
-      DB_PASSWORD: K05&D031@08
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_NAME: shoppers_db
 
       PG_HOST: 127.0.0.1
       PG_PORT: 5432
       PG_USER: postgres
-      PG_PASSWORD: 0511
+      PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
       PG_NAME: shoppers_warehouse
 
       MODEL_PATH: ./ml/model.pkl
@@ -37,12 +37,12 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: K05&D031@08
+          MYSQL_ROOT_PASSWORD: ci_test_password
           MYSQL_DATABASE: shoppers_db
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost -p12345"
+          --health-cmd="mysqladmin ping -h localhost -pci_test_password"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=10
@@ -51,7 +51,7 @@ jobs:
         image: postgres:15
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 0511
+          POSTGRES_PASSWORD: ci_test_password
           POSTGRES_DB: shoppers_warehouse
         ports:
           - 5432:5432
@@ -69,7 +69,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
+          cache: pip
 
       - name: Install Dependencies
         run: |
