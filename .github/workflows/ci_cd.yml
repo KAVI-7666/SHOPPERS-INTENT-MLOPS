@@ -21,13 +21,13 @@ jobs:
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_USER: root
-      DB_PASSWORD: 12345
+      DB_PASSWORD: K05&D031@08
       DB_NAME: shoppers_db
 
       PG_HOST: 127.0.0.1
       PG_PORT: 5432
       PG_USER: postgres
-      PG_PASSWORD: 12345
+      PG_PASSWORD: 0511
       PG_NAME: shoppers_warehouse
 
       MODEL_PATH: ./ml/model.pkl
