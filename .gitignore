@@ -1,0 +1,9 @@
+myenv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+mlruns/
+monitoring/*.html
+.pytest_cache/
+logs/
